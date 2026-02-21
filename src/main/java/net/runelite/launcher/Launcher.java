@@ -517,6 +517,7 @@ public class Launcher
 		HttpRequest bootstrapReq = HttpRequest.newBuilder()
 			.uri(URI.create(LauncherProperties.getBootstrap()))
 			.header("User-Agent", USER_AGENT)
+			.header("Accept-Encoding", "gzip")
 			.GET()
 			.build();
 
