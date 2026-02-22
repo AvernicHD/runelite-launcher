@@ -525,7 +525,7 @@ public class Launcher
 
 		try
 		{
-			bootstrapResp = httpClient.send(bootstrapReq, HttpResponse.BodyHandlers.ofByteArray());
+			bootstrapResp = httpClient.send(bootstrapReq, GzipBodyHandler.ofByteArray());
 		}
 		catch (InterruptedException ex)
 		{
@@ -539,7 +539,7 @@ public class Launcher
 
 		final byte[] bytes = bootstrapResp.body();
 
-		Gson g = new Gson();
+		final Gson g = new Gson();
 		return g.fromJson(new InputStreamReader(new ByteArrayInputStream(bytes)), Bootstrap.class);
 	}
 
